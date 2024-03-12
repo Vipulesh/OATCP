@@ -16,16 +16,24 @@ ll mod=1e9+7;
 
 int main(){
     ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-    ll n;
-    cin>>n;
-    vector<ll>dp(n+1,0);
-  //Tabulation Approach
-    dp[0]=1;
-    for(int i=1;i<=n;i++){
-        for(int j=1;(j<=6)&&(i-j>=0);j++){
-            dp[i]=dp[i]%mod+dp[i-j]%mod;
-        }
+    ll t;
+    cin>>t;
+    vector<ll> ip;
+    fo(i,0,t-1){
+        ll temp;
+        cin>>temp;
+        ip.pb(temp);
     }
-    ll ans=dp[n];
-    cout<<ans%mod;
+    fo(a,0,t-1){
+        ll n=ip[a];
+        vector<ll>dp(n+1,0);
+        dp[0]=1;
+        for(int i=1;i<=n;i++){
+            for(int j=1;(j<=6)&&(i-j>=0);j++){
+                dp[i]=dp[i]%mod+dp[i-j]%mod;
+            }
+        }
+        ll ans=dp[n];
+        cout<<ans%mod<<"\n";
+    }
 }
